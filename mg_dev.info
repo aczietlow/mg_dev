@@ -1,0 +1,4 @@
+name = Mindgrub local dev/test module
+description = *Not meant for production*
+package = MG_DEV
+core = 7.x

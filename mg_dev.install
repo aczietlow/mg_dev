@@ -1,0 +1,27 @@
+<?php
+/**
+ * @file
+ * Sandbox for rapidly testing code in a local build.
+ */
+
+/**
+ * Implements hook_requirements().
+ */
+function dixon_development_requirements($phase) {
+  $return = [];
+  // Ensure translations don't break at install time.
+  $t = get_t();
+
+  // Block this module from being enabled on Pantheon.
+  if ($phase == 'install') {
+    if (defined('PANTHEON_ENVIRONMENT')) {
+      $return['local_dev_only'] = [
+        'title' => $t('Dixon development: Not local development'),
+        'value' => PANTHEON_ENVIRONMENT,
+        'severity' => REQUIREMENT_ERROR,
+      ];
+    }
+  }
+
+  return $return;
+}

@@ -1,0 +1,26 @@
+<?php
+
+/**
+ * Implements hook_menu().
+ */
+function mg_dev_menu() {
+  $items = [];
+
+  $items['mg_dev/foo'] = [
+    'title' => 'Test',
+    'description' => 'Description',
+    'access callback' => TRUE,
+    'page callback' => 'mg_dev_foo_page',
+    'type' => MENU_CALLBACK,
+  ];
+
+  return $items;
+}
+
+/**
+ * Test callback page for testing things. test.
+ */
+function mg_dev_foo_page() {
+  return "test";
+}
+
